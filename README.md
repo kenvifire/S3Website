@@ -1,14 +1,25 @@
-# Welcome to your CDK TypeScript project!
+## Welcome to S3Website
 
-This is a blank project for TypeScript development with CDK.
+### What's this project for?
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+Deploy your own static website on Amazon S3 without requiring any host.
 
-## Useful commands
+### Prerequisite
+- AWS account id 
+- Domain name (only if you want to use your own domain)
 
- * `npm run build`   compile typescript to js
- * `npm run watch`   watch for changes and compile
- * `npm run test`    perform the jest unit tests
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
+### How to use
+- Create an IAM user in your AWS account
+- Grant permissions to your AWS account
+- Get credentials for that user and store locally
+- Modify `resources/website.json`
+   - accountId: your AWS account id
+   - region: AWS region
+   - domainName: your domain name
+   - contentPath: the path of your website content, you can use the default value and copy your website content to `resources/website` folder
+- run command `npm run build && cdk synth && cdk bootstrap && cdk deploy S3WebsiteStack` to deploy your website
+- Change your CNAME www record to point to the S3 bucket   
+
+### Update website content only
+- TODO
+
